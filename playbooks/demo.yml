@@ -1,6 +1,6 @@
 ---
 - hosts: "linux06"
-  became: true
+  become: true
   tasks:
     - name: instalamos apache
       package:
