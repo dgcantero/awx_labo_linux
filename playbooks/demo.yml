@@ -1,5 +1,22 @@
 ---
-- hosts: "{{ hosts }}"
+- hosts: "linux06"
   became: true
   tasks:
-    
+    - name: instalamos apache
+      package:
+        name: httpd
+        state: latest
+    - name: httpd start and enabled
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Create index.html
+      file:
+        path: /var/www/html/index.html
+        state: touch
+    - name: add content to index.html
+      copy:
+        content: "<br><h1> eeeeeiiii you </h1><br><b> eres muy feo</b>"
+        dest: /var/www/html/index.html
+
