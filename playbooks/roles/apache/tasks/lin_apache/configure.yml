@@ -1,0 +1,12 @@
+---
+- name: setting up httpd.conf
+  copy:
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+  notify: "restart httpd service handler"
+
+- name: setting welcome web page
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  notify: "restart httpd service handler"

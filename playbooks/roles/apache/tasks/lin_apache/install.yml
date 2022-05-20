@@ -1,0 +1,6 @@
+---
+- name: isntall apache
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ apache_packages }}"

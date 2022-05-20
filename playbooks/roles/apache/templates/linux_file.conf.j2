@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+
+ip: {{ ansible_default_ipv4.address }} 
+netmask: {{ ansible_default_ipv4.netmask }} 
+gateway: {{ ansible_default_ipv4.gateway }}
+
+nombre: {{ hosts }}
