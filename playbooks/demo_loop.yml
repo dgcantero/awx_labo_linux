@@ -1,0 +1,44 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks:
+    - name: create users
+      user:
+        name: "{{ item }}"
+        shell: /bin/bash
+        comment: "usuarios creado por ansible"
+        state: present
+      with_items:
+        - user1
+        - user2
+        - user3
+    - name: copy files
+      copy:
+        src: "/var/tmp/{{ item.file }}"
+        dest: "/var/tmp/{{ item.file }}"
+        owner: "{{ item.user }}"
+        group: "{{ item.user }}"
+        mode: '0600'
+        remote_src: no
+      with_items:
+        - { file: 'file1.txt', user: 'user1'}
+        - { file: 'file2.txt', user: 'user2'}
+        - { file: 'file3.txt', user: 'user3'}
+    - name: creates users
+      debug:
+        msg: "user {{ item.user }} member of {{ item.group }}"
+      with_items:
+        - { user: 'usera', group: 'groupa' }
+        - { user: 'userb', group: 'groupb' }
+      tags: muestra
+    - name: baja users
+      user:
+        name: "{{ item }}"
+        shell: /bin/bash
+        comment: "usuarios creado por ansible"
+        state: absent
+      with_items:
+        - user1
+        - user2
+        - user3
+      tags: never,baja

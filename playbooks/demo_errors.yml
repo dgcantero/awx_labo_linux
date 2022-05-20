@@ -1,0 +1,12 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks:
+    - name: check apache connection
+      uri:
+        url: "http://{{ hosts }}/ota.html"
+      ignore_errors: true
+      register: checkApache
+    - name: otra cosa
+      debug:
+        msg: "{{ checkApache }}"

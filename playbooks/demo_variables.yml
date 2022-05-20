@@ -1,0 +1,35 @@
+---
+- hosts: localhost
+  vars:
+    nombre: Señor
+    empleado: 
+      nombre: empleado1
+      wiw: 10
+      grupo: grupipandi
+    empleados:
+      - nombre: empleados1
+        wiw: 11
+        grupo: test
+      - nombre: empleados2
+        wiw: 12
+        grupo: dev
+  tasks:
+    - name: variable nombre
+      debug:
+        msg: "{{ nombre }}"
+    - name: varialbe empliado
+      debug: 
+        msg:
+         - "nombre: {{ empleado.nombre }}"
+         - "wiw: {{ empleado.wiw }}"
+         - "grupo: {{ empleado.grupo }}"
+    - name: vanis
+      debug:
+        msg:
+          - "nombre: {{ item.nombre }}"
+          - "wiw: {{ item.wiw }}"
+          - "grupo: {{ item.grupo }}"
+      with_items:
+        - "{{ empleados }}"
+        
+    

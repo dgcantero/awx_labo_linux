@@ -1,0 +1,11 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks: 
+    - name: Create a configuration file
+      template:
+        src: "/tools/git_repositories/ansible_dgomez/linux/templates/linux_file.conf.j2"
+        dest: "/var/tmp/file.conf"
+        owner: root
+        group: root
+        mode: '0644'
