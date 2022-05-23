@@ -1,0 +1,12 @@
+---
+#instalamos mysql
+- name: instalamos mysql
+  package: 
+    name: "{{ item }}"
+  with_items: "{{ mysql_packages }}"
+
+- name: "levantamos el servicio {{ mysql_service }} y lo configuramos en el arranque"
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes

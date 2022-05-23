@@ -1,0 +1,15 @@
+---
+# defaults file for apache
+mysql_packages: 
+  - mysql
+  - mysql-server
+  - mysql-common
+  - python3-PyMySQL
+
+mysql_service: mysqld 
+
+mysql_users: 
+  - name: root
+    password: >-
+      $6$iat5PbLFoC9u7RAn$9OlcetRlZQSCgizb5IaUkV22pRLczgkrLaGFS3ZBP976rNi6CQORgyoX2AfUuy4K.vxNi62LQiMd91w/YSaDe/
+    #Esto es roottsys
